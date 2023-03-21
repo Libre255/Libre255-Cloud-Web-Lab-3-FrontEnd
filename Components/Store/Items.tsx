@@ -1,11 +1,32 @@
+import { IClothes } from "@/pages/store/IClothes";
 import React from "react";
+import styles from "@/styles/Store/Store.module.css";
+import { Session } from "next-auth";
 
-const Items: React.FC = () => {
-  return <div></div>;
+
+interface Props{
+  data:IClothes;
+  session: Session | null;
+  setClothesData:React.Dispatch<React.SetStateAction<IClothes[]>>;
+}
+const Items: React.FC<Props> = ({data, session, setClothesData}) => {
+  const DeletItem = async ()=>{
+    setClothesData(clothes => clothes.filter(clothe => clothe.Id !== data.Id))
+  }
+  return(
+    <article className={styles.ItemArticle}>
+      <h1>{data.Name}</h1>
+      <img src="furrysuit.jpg" alt="" />
+      <p>{data.Price}Kr</p>
+      {
+        session ? <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button type="button" className="btn btn-danger" onClick={()=>DeletItem()}>Delet</button>
+        <button type="button" className="btn btn-success">Buy</button>
+      </div> : ""
+      }
+      
+    </article>
+  )
 };
-//create layout for box of items
-//create Layout for item itself
-//show DELETE, ADD only when user login
-//Add Search bar
-//Display all items
+
 export default Items;

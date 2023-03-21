@@ -105,7 +105,8 @@ const Navbar: React.FC = () => {
                 </Link>
               )}
             </li>
-            <li className="nav-item">
+            {
+              session ? <li className="nav-item">
               <Link className="nav-link" href="#">
                 <Image
                   className={styles.logo}
@@ -116,7 +117,9 @@ const Navbar: React.FC = () => {
                   priority
                 />
               </Link>
-            </li>
+            </li> : ""
+            }
+            
           </ul>
         </div>
       </div>
