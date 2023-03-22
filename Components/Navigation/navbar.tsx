@@ -105,21 +105,22 @@ const Navbar: React.FC = () => {
                 </Link>
               )}
             </li>
-            {
-              session ? <li className="nav-item">
-              <Link className="nav-link" href="#">
-                <Image
-                  className={styles.logo}
-                  src="/cart-icon.png"
-                  alt="cart icon"
-                  width={25}
-                  height={20}
-                  priority
-                />
-              </Link>
-            </li> : ""
-            }
-            
+            {session ? (
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
+                  <Image
+                    className={styles.logo}
+                    src="/cart-icon.png"
+                    alt="cart icon"
+                    width={25}
+                    height={20}
+                    priority
+                  />
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>

@@ -3,27 +3,28 @@
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-around;
-  gap:5vw;
+  gap: 5vw;
+  flex-wrap: wrap;
 }
 
-#storeNavBar{
+#storeNavBar {
   display: flex;
 }
 
-.ItemArticle{
-  padding:0.5vw;
+.ItemArticle {
+  padding: 0.5vw;
   /* border: 1px solid rgb(0, 0, 0); */
   max-width: 10vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.ItemArticle > img{
+.ItemArticle > img {
   width: 70%;
   border-radius: 5vw;
 }
 
-.ItemArticle > h1{
+.ItemArticle > h1 {
   font-size: medium;
   font-family: LoveCute;
 }

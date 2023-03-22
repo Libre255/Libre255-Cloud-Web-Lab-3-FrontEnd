@@ -6,31 +6,38 @@ import axios from "axios";
 import StoreNavBar from "@/Components/Store/storeNavBar";
 import { useSession } from "next-auth/react";
 
-interface Props  {
-  Clothes:IClothes[];
+interface Props {
+  Clothes: IClothes[];
 }
 
-const StoreIndex:React.FC<Props> = ({Clothes}) => {
+const StoreIndex: React.FC<Props> = ({ Clothes }) => {
   const [clothesData, setClothesData] = useState(Clothes);
-  const {data:session} = useSession()
-  
+  const { data: session } = useSession();
+
   return (
     <>
-      {session ? <StoreNavBar setClothesData={setClothesData} /> : "" }
+      {session ? <StoreNavBar setClothesData={setClothesData} /> : ""}
       <main id={styles.Main} className="">
-          {clothesData.map((item)=> <Items session={session} key={item.Id} data={item} setClothesData={setClothesData}/>)}
+        {clothesData.map((item) => (
+          <Items
+            session={session}
+            key={item.Id}
+            data={item}
+            setClothesData={setClothesData}
+          />
+        ))}
       </main>
     </>
-  )
+  );
 };
 
-export const getStaticProps = async()=>{
-    const url = "http://localhost:3000/api/clothesapi";
-    const data = await axios.get(url);
-    return {
-        props:{Clothes:data.data}
-    }
-}
+export const getStaticProps = async () => {
+  const url = "http://localhost:3000/api/clothesapi";
+  const data = await axios.get(url);
+  return {
+    props: { Clothes: data.data },
+  };
+};
 //create layout for box of items
 //create Layout for item itself
 //show DELETE, ADD only when user login

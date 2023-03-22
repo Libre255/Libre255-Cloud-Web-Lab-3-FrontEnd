@@ -4,10 +4,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/clothesapi',
-        destination: 'https://localhost:7235/:path*',
+        source: "/api/clothesapi",
+        destination: "https://localhost:7235/:path*",
       },
-    ]
+    ];
   },
 };
 
